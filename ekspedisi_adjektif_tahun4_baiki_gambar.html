@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ekspedisi Adjektif — Misi Cari Pasangan</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;700;800;900&display=swap');
+:root{--navy:#17234b;--purple:#7457e8;--pink:#ff6fae;--cyan:#54d7e8;--yellow:#ffd45e;--green:#55d6a4}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Nunito,Arial,sans-serif;color:var(--navy);background:linear-gradient(145deg,#191e55,#4a368f 48%,#a34b9c);overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;border-radius:50%;filter:blur(2px);opacity:.22;pointer-events:none}
+body:before{width:360px;height:360px;background:#53e4ec;top:-140px;left:-120px}body:after{width:420px;height:420px;background:#ffca63;bottom:-210px;right:-120px}
+.wrap{width:min(1100px,100%);margin:auto;padding:22px 18px 30px;position:relative}
+header{text-align:center;color:white;padding:8px 8px 18px}
+.brand{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff55;background:#ffffff19;border-radius:40px;padding:7px 15px;font-size:12px;font-weight:900;letter-spacing:1.5px}
+h1{font:800 clamp(34px,6vw,62px)/.98 'Baloo 2',sans-serif;margin:14px 0 6px;text-shadow:0 5px 0 #30266f}
+h1 span{color:var(--yellow)}.subtitle{font-size:16px;color:#eee9ff;margin:0}
+.shell{background:#f8f7ff;border:4px solid #ffffff80;border-radius:28px;padding:18px;box-shadow:0 24px 65px #0b103c66}
+.dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat{background:white;border-radius:17px;padding:10px 12px;display:flex;align-items:center;gap:9px;box-shadow:0 4px 0 #e8e4fa}
+.stat .ico{font-size:25px}.stat small{display:block;color:#8990aa;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.6px}.stat strong{font-size:20px}
+.track{margin:14px 2px 17px;background:#e6e3f4;height:13px;border-radius:20px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--green),var(--yellow));border-radius:20px;transition:width .4s}
+.mission{display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(100deg,#eeeaff,#e6faff);border:1px solid #e1dcff;padding:12px 15px;border-radius:17px;margin-bottom:16px}
+.mission strong{font:800 19px 'Baloo 2';color:#5843bd}.mission p{margin:0;font-size:13px;color:#66708f}
+.level{font-size:12px;font-weight:900;color:#fff;background:#7457e8;border-radius:30px;padding:7px 12px;white-space:nowrap}
+.gamegrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.zone{background:white;border-radius:20px;padding:13px;border:2px solid #ece9f8;min-width:0}
+.zonehead{display:flex;align-items:center;gap:9px;margin:0 0 11px;font:800 20px 'Baloo 2';color:#50439b}
+.zonehead .bubble{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;background:#eeeaff}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tile{position:relative;min-height:132px;border:2px solid #eceaf5;border-radius:17px;background:linear-gradient(160deg,#fff,#faf9ff);color:var(--navy);font-family:inherit;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:9px;cursor:pointer;transition:transform .16s,border .16s,box-shadow .16s}
+.tile:hover{transform:translateY(-3px);border-color:#b6a6ff;box-shadow:0 7px 15px #5442a51b}
+.tile:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.tile .art{font-size:43px;line-height:1.15;filter:drop-shadow(0 3px 1px #00000012);display:flex;align-items:center;justify-content:center}.tile .art svg{width:54px;height:54px;display:block}
+.tile .name{font-size:16px;font-weight:900}
+.tile .mini{font-size:10px;color:#9aa0b6;font-weight:800}
+.tile.chosen{border-color:#8067ed;background:#f1edff;box-shadow:0 0 0 3px #8067ed22}
+.tile.correct{border-color:#45c99a;background:#e9fff5;cursor:default}
+.tile.correct:after{content:"✓";position:absolute;right:8px;top:5px;background:#39bd8b;color:white;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;font-weight:900}
+.tile.nope{animation:shake .28s;border-color:#ff6d8e;background:#fff0f4}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.feedback{margin:14px 0 0;text-align:center;min-height:28px;font-weight:900;color:#5d5195}
+.feedback.good{color:#15966e}.feedback.bad{color:#d94b68}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{border:0;border-radius:14px;padding:11px 18px;font:900 14px Nunito;cursor:pointer;background:#7257e7;color:white;box-shadow:0 4px 0 #4d399e}
+.btn.alt{background:#fff;color:#5e4cae;border:2px solid #e1dcfa;box-shadow:none}.btn:active{transform:translateY(3px);box-shadow:none}
+.tip{font-size:12px;color:#8188a2;text-align:center;margin:12px 0 0}
+.finish{display:none;text-align:center;padding:22px 12px 10px}.finish .medal{font-size:65px}.finish h2{font:800 32px 'Baloo 2';margin:0;color:#5c48ba}.finish p{color:#68718d}
+.spark{position:fixed;pointer-events:none;z-index:5;font-size:23px;animation:fall 1.2s ease-out forwards}@keyframes fall{to{transform:translateY(180px) rotate(220deg);opacity:0}}
+footer{text-align:center;color:#e6ddff;font-size:12px;padding-top:15px}
+@media(max-width:650px){.wrap{padding:14px 10px}.shell{padding:12px;border-radius:22px}.dashboard{grid-template-columns:repeat(2,1fr)}.gamegrid{grid-template-columns:1fr}.tile{min-height:112px}.mission{align-items:flex-start}.mission p{max-width:260px}}
+</style></head>
+<body><main class="wrap">
+<header><div class="brand">🚀 AKADEMI BAHASA • TAHUN 4</div><h1>EKSPEDISI <span>ADJEKTIF!</span></h1><p class="subtitle">Misi kamu: cari pasangan gambar dan kata adjektif yang tepat.</p></header>
+<section class="shell">
+<div class="dashboard">
+ <div class="stat"><span class="ico">⭐</span><div><small>Jumlah mata</small><strong id="score">0</strong></div></div>
+ <div class="stat"><span class="ico">🧩</span><div><small>Padanan</small><strong><span id="done">0</span>/8</strong></div></div>
+ <div class="stat"><span class="ico">🎯</span><div><small>Percubaan</small><strong id="tries">0</strong></div></div>
+ <div class="stat"><span class="ico">🏅</span><div><small>Ganjaran</small><strong id="rank">—</strong></div></div>
+</div>
+<div class="track"><div class="fill" id="bar"></div></div>
+<div class="mission"><div><strong>🗺️ Misi 01: Hutan Kata</strong><p>Pilih satu gambar, kemudian cari perkataan yang menerangkan ciri gambar itu.</p></div><span class="level">TAHAP MUDAH</span></div>
+<div class="gamegrid">
+<section class="zone"><h2 class="zonehead"><span class="bubble">🖼️</span> PILIH GAMBAR</h2><div class="cards" id="pictures"></div></section>
+<section class="zone"><h2 class="zonehead"><span class="bubble">🔤</span> PILIH KATA</h2><div class="cards" id="words"></div></section>
+</div>
+<div class="feedback" id="feedback" aria-live="polite">✨ Sedia? Klik mana-mana gambar untuk bermula!</div>
+<div class="actions"><button class="btn alt" onclick="hint()">💡 Petunjuk</button><button class="btn alt" id="soundBtn" onclick="toggleSound()">🔊 Bunyi: ON</button><button class="btn" onclick="restart()">↻ Main semula</button></div>
+<p class="tip">Setiap padanan betul = 10 mata. Lengkapkan semua misi untuk membuka pingat!</p>
+<div class="finish" id="finish"><div class="medal">🏆</div><h2>MISI SELESAI!</h2><p id="final"></p><button class="btn" onclick="restart()">🚀 Main lagi</button></div>
+</section><footer>Belajar sambil bermain • Bahasa Melayu Tahun 4</footer></main>
+<script>
+const items=[
+{id:1,emoji:"🍋",pic:"Lemon",word:"Masam",hint:"Rasa lemon apabila dimakan."},
+{id:2,emoji:"🧊",pic:"Ais",word:"Sejuk",hint:"Suhu ais apabila disentuh."},
+{id:3,emoji:"🐘",pic:"Gajah",word:"Besar",hint:"Saiz badan gajah."},
+{id:4,emoji:`<svg viewBox="0 0 64 64" aria-label="Ilustrasi bulu pelepah" role="img"><path d="M49 7C28 8 11 22 12 43c1 8 7 13 15 12C47 52 55 28 49 7Z" fill="#8bd8b0" stroke="#267d61" stroke-width="2.5"/><path d="M13 57 47 12M23 44l-1-13m8 5-1-14m7 5 1-12M19 49l-8-5m16-4-8-8m17 1-7-9" fill="none" stroke="#267d61" stroke-width="2.2" stroke-linecap="round"/><path d="M13 57l-5 2" stroke="#8b6746" stroke-width="3" stroke-linecap="round"/></svg>`,pic:"Bulu pelepah",word:"Ringan",hint:"Berat sehelai bulu pelepah."},
+{id:5,emoji:"🌶️",pic:"Cili",word:"Pedas",hint:"Rasa cili apabila dimakan."},
+{id:6,emoji:"🌹",pic:"Bunga mawar",word:"Harum",hint:"Bau bunga mawar."},
+{id:7,emoji:`<svg viewBox="0 0 64 64" aria-label="Ilustrasi batu" role="img"><path d="M8 43 13 25 26 13 43 16 56 31 53 47 39 55 18 52Z" fill="#9ca6b5" stroke="#596477" stroke-width="2.5" stroke-linejoin="round"/><path d="m13 29 13-7 7 9-9 8-12-2m22-16 9 4 5 12-14 2-8-9m-11 9 12-1 8 13-17-1" fill="#cbd2dc" stroke="#788496" stroke-width="1.7" stroke-linejoin="round"/><path d="m26 13 7 18m10-15-3 20" stroke="#e8edf3" stroke-width="2" stroke-linecap="round"/></svg>`,pic:"Batu",word:"Keras",hint:"Sifat permukaan batu."},
+{id:8,emoji:"🧸",pic:"Patung beruang",word:"Lembut",hint:"Tekstur patung beruang."}
+];
+let chosen=null,score=0,tries=0,done=0,matched=new Set();
+const el=id=>document.getElementById(id);
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function render(){
+ el('pictures').innerHTML=shuffle(items).map(x=>`<button class="tile" id="p${x.id}" onclick="pickPic(${x.id})"><span class="art">${x.emoji}</span><span class="name">${x.pic}</span><span class="mini">TEKAN GAMBAR</span></button>`).join('');
+ el('words').innerHTML=shuffle(items).map(x=>`<button class="tile" id="w${x.id}" onclick="pickWord(${x.id})"><span class="art">💬</span><span class="name">${x.word}</span><span class="mini">KATA ADJEKTIF</span></button>`).join('');
+}
+function feedback(t,c=''){el('feedback').textContent=t;el('feedback').className='feedback '+c}
+function pickPic(id){if(matched.has(id))return;chosen=id;document.querySelectorAll('#pictures .tile').forEach(x=>x.classList.remove('chosen'));el('p'+id).classList.add('chosen');feedback('Bagus! Sekarang cari kata adjektif yang sepadan.');}
+function pickWord(id){
+ if(matched.has(id))return;if(chosen===null){feedback('Pilih gambar dahulu sebelum memilih perkataan.','bad');return;}
+ tries++;el('tries').textContent=tries;
+ if(id===chosen){
+  matched.add(id);done++;score+=10;let p=el('p'+id),w=el('w'+id);p.classList.remove('chosen');p.classList.add('correct');w.classList.add('correct');p.querySelector('.mini').textContent='SUDAH DIPADANKAN';w.querySelector('.mini').textContent='TEPAT!';
+  el('score').textContent=score;el('done').textContent=done;el('bar').style.width=(done/8*100)+'%';el('rank').textContent=done===8?'🥇 Emas':done>=5?'🥈 Perak': '🌟 Bintang';
+  feedback('🎉 Tepat sekali! '+items.find(x=>x.id===id).pic+' ialah '+items.find(x=>x.id===id).word+'.','good');correctSound();chosen=null;confetti();
+  if(done===8){el('finish').style.display='block';el('final').textContent=`Kamu berjaya mengumpul ${score}/80 mata dalam ${tries} percubaan. Syabas, jaguh kata adjektif!`;}
+ }else{let w=el('w'+id);w.classList.add('nope');feedback('Belum tepat! Cuba fikirkan ciri gambar itu sekali lagi.','bad');wrongSound();setTimeout(()=>w.classList.remove('nope'),450);}
+}
+function hint(){if(chosen===null){feedback('💡 Petunjuk: pilih gambar dahulu. Fikirkan rasa, suhu, saiz, berat, bau atau tekstur.');return;}feedback('💡 '+items.find(x=>x.id===chosen).hint);}
+let soundOn=true;
+let audioCtx=null;
+function playTone(freq, duration, type='sine', volume=0.12, delay=0){
+ if(!soundOn)return;
+ try{
+  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContextClass)return;
+  audioCtx=audioCtx||new AudioContextClass();
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+  osc.type=type;osc.frequency.setValueAtTime(freq,audioCtx.currentTime+delay);
+  gain.gain.setValueAtTime(0.0001,audioCtx.currentTime+delay);
+  gain.gain.exponentialRampToValueAtTime(volume,audioCtx.currentTime+delay+0.015);
+  gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+delay+duration);
+  osc.connect(gain);gain.connect(audioCtx.destination);
+  osc.start(audioCtx.currentTime+delay);osc.stop(audioCtx.currentTime+delay+duration+0.03);
+ }catch(e){}
+}
+function correctSound(){
+ playTone(660,.13,'sine',.13,0);
+ playTone(880,.18,'sine',.13,.13);
+ playTone(1100,.24,'sine',.12,.28);
+}
+function wrongSound(){
+ playTone(230,.18,'triangle',.12,0);
+ playTone(175,.22,'triangle',.10,.16);
+}
+function toggleSound(){
+ soundOn=!soundOn;
+ el('soundBtn').textContent=soundOn?'🔊 Bunyi: ON':'🔇 Bunyi: OFF';
+ if(soundOn)playTone(700,.12,'sine',.08);
+}
+function confetti(){let icons=['✨','⭐','🌟','🎉'];for(let i=0;i<9;i++){let s=document.createElement('span');s.className='spark';s.textContent=icons[i%icons.length];s.style.left=(12+Math.random()*76)+'vw';s.style.top=(15+Math.random()*55)+'vh';document.body.appendChild(s);setTimeout(()=>s.remove(),1250);}}
+function restart(){chosen=null;score=tries=done=0;matched=new Set();['score','tries','done'].forEach(id=>el(id).textContent='0');el('rank').textContent='—';el('bar').style.width='0';el('finish').style.display='none';feedback('✨ Sedia? Klik mana-mana gambar untuk bermula!');render();}
+render();
+</script></body></html>
